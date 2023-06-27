@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+<head>  
+   <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+       
+    <script>
+         $(document).ready(function() {
+              $.getJSON('https://www.googleapis.com/books/v1/volumes/Wfan6L9RGgYC', function(json) {
+                  $('#book').html('<image width="100" height="100" src="' + json.volumeInfo.imageLinks.smallThumbnail + '" />');
+                  $('#book').append('<p> Title : ' + json.volumeInfo.title+ '</p>');
+                  $('#book').append('<p> Subtitle: ' + json.volumeInfo.subtitle+ '</p>');
+				  $('#book').append('<p> Author: ' + json.volumeInfo.authors[0]+ '</p>');
+				  $('#book').append('<p> Publisher: ' + json.volumeInfo.publisher+ '</p>');
+				  $('#book').append('<p> Published Date: ' + json.volumeInfo.publishedDate+ '</p>');
+				  $('#book').append('<p> Description: ' + json.volumeInfo.description+ '</p>');
+				  $('#book').append('<p> ISBN_10: ' + json.volumeInfo.industryIdentifiers[0].identifier+ '</p>');
+				  $('#book').append('<p> ISBN_13: ' + json.volumeInfo.industryIdentifiers[1].identifier+ '</p>');
+				  $('#book').append('<p> Pages: ' + json.volumeInfo.pageCount+ '</p>');
+				  $('#book').append('<p> Average Rating: ' + json.volumeInfo.averageRating+ '</p>');
+				  $('#book').append('<p> Number of Ratings: ' + json.volumeInfo.ratingsCount+ '</p>');
+				  $('#book').append('<p> Maturity: ' + json.volumeInfo.maturityRating+ '</p>');
+				  $('#book').append('<p> Language: ' + json.volumeInfo.language+ '</p>');
+				  $('#book').append('<p> Country: ' + json.saleInfo.country+ '</p>');
+				  $('#book').append('<p> Saleability: ' + json.saleInfo.saleability+ '</p>');
+               });
+               
+         });
+    </script>
+</head>
+<body>
+
+<p id="book"></p>
+
+</body>
+</html>
