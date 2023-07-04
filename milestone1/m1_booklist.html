@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+<head>  
+   <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+       
+    <script>
+         $(document).ready(function() {
+              $.getJSON('https://www.googleapis.com/books/v1/volumes?q=modern%20web', function(json) {
+				for (var i=0; i<json.items.length; i++) {
+                  $('#books').append('<image width="100" height="100" src="' + json.items[i].volumeInfo.imageLinks.smallThumbnail + '" />');
+                  $('#books').append('<p> <strong>Title :</strong> ' + json.items[i].volumeInfo.title+ '</p>');
+                  $('#books').append('<p> <strong>Subtitle:</strong> ' + json.items[i].volumeInfo.subtitle+ '</p>');
+				  $('#books').append('<p> <strong>Author:</strong> ' + json.items[i].volumeInfo.authors[0]+ '</p>');
+				  $('#books').append('<p> <strong>Publisher:</strong> ' + json.items[i].volumeInfo.publisher+ '</p>');
+				  $('#books').append('<p> <strong>Published Date:</strong> ' + json.items[i].volumeInfo.publishedDate+ '</p>');
+				  $('#books').append('<p> <strong>Description:</strong> ' + json.items[i].volumeInfo.description+ '</p>');
+				  $('#books').append('<p> <strong>ISBN_10:</strong> ' + json.items[i].volumeInfo.industryIdentifiers[0].identifier+ '</p>');
+				  $('#books').append('<p> <strong>ISBN_13:</strong> ' + json.items[i].volumeInfo.industryIdentifiers[1].identifier+ '</p>');
+				  $('#books').append('<p> <strong>Pages:</strong> ' + json.items[i].volumeInfo.pageCount+ '</p>');
+				  $('#books').append('<p> <strong>Average Rating:</strong> ' + json.items[i].volumeInfo.averageRating+ '</p>');
+				  $('#books').append('<p> <strong>Number of Ratings:</strong> ' + json.items[i].volumeInfo.ratingsCount+ '</p>');
+				  $('#books').append('<p> <strong>Maturity:</strong> ' + json.items[i].volumeInfo.maturityRating+ '</p>');
+				  $('#books').append('<p> <strong>Language:</strong> ' + json.items[i].volumeInfo.language+ '</p>');
+				  $('#books').append('<p> <strong>Country:</strong> ' + json.items[i].saleInfo.country+ '</p>');
+				  $('#books').append('<p> <strong>Saleability:</strong> ' + json.items[i].saleInfo.saleability+ '</p><br><hr><br>');
+				}  
+               });   
+         });
+    </script>
+</head>
+<body>
+
+<p id="books"></p>
+
+</body>
+</html>

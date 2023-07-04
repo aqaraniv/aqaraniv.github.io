@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="../scripts/book_script.js"></script>
+		<script>
+         $(document).ready(function() {
+		     var $books = $('#books');
+		     var $search = $("#txt_search");
+			 
+			 $('#btn_search').click(function(){
+			 
+				$.ajax({
+					type: 'GET',
+					url: 'https://www.googleapis.com/books/v1/volumes?q=' + $search.val()+'&startIndex=0&maxResults=40',
+					success: function(books){
+						$.each(books.items, function(i, book){
+							$books.append('<li><a href="m2_book_details.html?id='+ book.id+ '" target="_blank">'+ book.volumeInfo.title+'</a><br> <image width="100" height="100" src="' + book.volumeInfo.imageLinks.smallThumbnail + '" /></li>');
+							
+						});
+					}
+					
+				});
+				
+				$.ajax({
+					type: 'GET',
+					url: 'https://www.googleapis.com/books/v1/volumes?q=' + $search.val()+'&startIndex=40&maxResults=20',
+					success: function(books){
+						$.each(books.items, function(i, book){
+							$books.append('<li><a href="m2_book_details.html?id='+ book.id+ '" target="_blank">'+ book.volumeInfo.title+'</a><br> <image width="100" height="100" src="' + book.volumeInfo.imageLinks.smallThumbnail + '" /></li>');
+							
+						});
+					}
+					
+				});
+				
+			 });
+			 
+			 $('#btn_clear').click(function(){
+				const search_text = document.getElementById("txt_search");
+				search_text.value = "";
+				const list = document.getElementById("books");
+				list.innerHTML = "";
+			 });
+			 
+         });
+    </script>
+	<style>
+		ul {
+			list-style:none;
+		}
+		
+		li {
+			display:inline-block;
+			margin-right:100px;
+			margin-bottom:100px;
+		}
+	</style>
+	</head>
+    <body>
+		<h2>Book Search</h2>
+	    <div>
+			<label id="lbl_search">Search Term:</label>
+			<input type="text" id="txt_search"><br><br>
+			
+			<input type="button" id="btn_search" value="Search">
+			<input type="button" id="btn_clear" value="Clear">
+			<br><br>
+		</div>
+		<br>
+		<div>
+			<ul id="books"></ul>
+		</div>
+	</body>
+</html>
