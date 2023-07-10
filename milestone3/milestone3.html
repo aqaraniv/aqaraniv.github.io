@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<link rel="stylesheet" href="../styles/top_nav_style.css">
+		<link rel="stylesheet" href="../styles/milestone3_style.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="../scripts/search_book_script.js"></script>
+		<script src="../scripts/my_bookshelf_script.js"></script>
+	</head>
+    <body>
+	    <div class="topnav">
+			<a href="../index.html">Home</a>
+		    <a href="../milestone1/milestone1.html">Milestone 1</a>
+		    <a href="../milestone2/milestone2.html">Milestone 2</a>
+		    <a class="active" href="milestone3.html">Milestone 3</a>
+			<a href="../milestone4.html">Milestone 4</a>
+		</div>
+		
+		<h2>Book Search</h2>
+		
+		<label id="lbl_search">Search Term:</label>
+		<input type="text" id="txt_search"><br><br>
+		<input type="button" id="btn_search" value="Search"> <span id="pages"></span>
+		
+		<br><br>
+		
+		<input type="button" id="btn_my_shelf" value="Bookshelf">
+		
+		<div id="books"></div>
+		<hr>
+		<div id="single_book" style="width: 800px; max-height: 100px"></div>
+	    
+	</body>
+</html>
