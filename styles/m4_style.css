@@ -1,0 +1,12 @@
+#box
+{
+	display: flex; 
+	flex-wrap: wrap;
+	width: 800px;
+}
+.boxitem
+{
+	width: 99%;
+	margin: 0.3%;
+	height:80px;
+}
